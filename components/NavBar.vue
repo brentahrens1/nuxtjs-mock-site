@@ -9,13 +9,14 @@
                  <nuxt-link to="/products">Products</nuxt-link>
             </li>
         </ul>
-        <div class="hamburger">
-            <div class="line line-1"></div>
-            <div class="line line-2"></div>
-            <div class="line line-3"></div>
+        <div class="hamburger" @click="open = !open">
+            <div class="hamburger__bars">
+                <div class="hamburger__bar bar-1"></div>
+                <div class="hamburger__bar bar-2"></div>
+                <div class="hamburger__bar bar-3"></div>
+            </div>
         </div>
-        <div class="overlay">
-            <div class="close">X</div>
+        <div :class="[open ? 'overlay-open' : 'overlay-closed']">
             <ul class="overlay__list">
                 <li class="overlay__list--item">
                     <nuxt-link to="/about">About</nuxt-link>
@@ -28,14 +29,44 @@
 
 <script>
 export default {
-    
+    data() {
+        return {
+            open: false
+        }
+    }
 }
 </script>
 
 <style lang="scss" scoped>
+
+    @mixin overlay($left) {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: lightskyblue;
+        top: 0;
+        left: $left;
+        font-size: 3rem;
+        transition: left 800ms ease-in-out;
+    }
+
+    @mixin hamburger {
+        display: none;
+        width: 45px;
+        height: 40px;
+        position: relative;
+        top: 0;
+        right: 1rem;
+        z-index: 999;
+        cursor: pointer;
+    }
+
     .nav {
         width: 100%;
         height: 4rem;
+        position: fixed;
+        top: 0;
+        right: 0;
         background: lightcoral;
         display: flex;
         flex-direction: row;
@@ -55,7 +86,7 @@ export default {
         }
 
         &__list {
-            width: 15%;
+            width: 25%;
             display: flex;
             flex-direction: row;
             justify-content: flex-end;
@@ -63,7 +94,7 @@ export default {
         }
         &__list--item {
             
-            a {
+            a:link, a:visited {
                 text-decoration: none;
                 color: lightcyan;
                 margin-right: 1rem;
@@ -72,55 +103,54 @@ export default {
     }
 
     .hamburger {
-        width: 0;
-        opacity: 0;
-        visibility: hidden;
+        display: none;
+        width: 45px;
         height: 40px;
-        margin-right: 1rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
+        position: relative;
+        top: 0;
+        right: 1rem;
+        z-index: 999;
         cursor: pointer;
-        transition: width 300ms ease-in-out, opacity 700ms ease-in-out;
 
-        .line {
+        &__bars {
+            width: 100%;
+            height: 100%;
+            padding: .5rem 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        &__bar {
             width: 35px;
             height: 4px;
             background: darkorchid;
-            margin: 0 auto;
         }
     }
 
-    .overlay {
-        position: fixed;
-        width: 100%;
-        height: 100vh;
-        background: lightskyblue;
-        top: 0;
-        left: 0;
-        font-size: 3rem;
-        
-        &__list {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
+    .overlay-open {
+        @include overlay(0);
+    }
 
-        .close {
-            position: absolute;
-            top: 0;
-            right: 1rem;
-            color: #000;
-            font-size: 2rem;
-        }
+    .overlay-closed {
+        @include overlay(100rem);
+    }
+
+    .overlay__list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     @media (max-width: 900px) {
         .hamburger {
-            width: 40px;
-            opacity: 1;
-            visibility: visible;
+            display: block;
+        }
+
+        .nav__list {
+            display: none;
         }
     }
 </style>
