@@ -9,7 +9,7 @@
                  <nuxt-link to="/products">Products</nuxt-link>
             </li>
         </ul>
-        <div class="hamburger" @click="open = !open">
+        <div class="hamburger" :class="{'opened': open}" @click="open = !open">
             <div class="hamburger__bars">
                 <div class="hamburger__bar bar-1"></div>
                 <div class="hamburger__bar bar-2"></div>
@@ -126,7 +126,25 @@ export default {
             width: 35px;
             height: 4px;
             background: darkorchid;
+            opacity: 1;
+            transform: rotate(0) translateY(0) translateX(0);
+            transform-origin: 1em 1em;
+            transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
         }
+    }
+    
+    .opened .bar-1 {
+        transform: rotate(45deg) translateY(0) translateX(0);
+    }
+
+    .opened .bar-2 {
+        opacity: 0;
+    }
+
+    .opened .bar-3 {
+        transform: rotate(-45deg) translateY(0em) translateX(0em);
+        margin-bottom: 1.3em;
+        margin-left: 2.6em;
     }
 
     .overlay-open {
