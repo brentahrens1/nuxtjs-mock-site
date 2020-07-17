@@ -20,6 +20,8 @@
             <ul class="overlay__list">
                 <li class="overlay__list--item">
                     <nuxt-link to="/about">About</nuxt-link>
+                </li>
+                <li class="overlay__list--item">
                     <nuxt-link to="/products">Products</nuxt-link>
                 </li>
             </ul>
@@ -50,15 +52,14 @@ export default {
         transition: left 500ms ease-in-out;
     }
 
-    @mixin hamburger {
-        display: none;
-        width: 45px;
-        height: 40px;
-        position: relative;
-        top: 0;
-        right: 1rem;
-        z-index: 999;
-        cursor: pointer;
+    li {
+        list-style: none;
+    }
+
+    a:link, a:visited {
+        text-decoration: none;
+        color: lightcyan;
+        margin-right: 1rem;
     }
 
     .nav {
@@ -92,14 +93,6 @@ export default {
             justify-content: flex-end;
             list-style: none;
         }
-        &__list--item {
-            
-            a:link, a:visited {
-                text-decoration: none;
-                color: lightcyan;
-                margin-right: 1rem;
-            }
-        }
     }
 
     .hamburger {
@@ -116,6 +109,7 @@ export default {
             width: 100%;
             height: 100%;
             padding: .5rem 0;
+            position:relative;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
@@ -125,16 +119,18 @@ export default {
         &__bar {
             width: 35px;
             height: 4px;
-            background: darkorchid;
+            background: lightcyan;
             opacity: 1;
             transform: rotate(0) translateY(0) translateX(0);
             transform-origin: 1em 1em;
-            transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
+            transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
         }
     }
     
     .opened .bar-1 {
         transform: rotate(45deg) translateY(0) translateX(0);
+        position: absolute;
+        top: 1rem;
     }
 
     .opened .bar-2 {
@@ -143,8 +139,9 @@ export default {
 
     .opened .bar-3 {
         transform: rotate(-45deg) translateY(0em) translateX(0em);
-        margin-bottom: 1.3em;
-        margin-left: 2.6em;
+        position: absolute;
+        top: 1.1rem;
+        left: 1.5rem;
     }
 
     .overlay-open {
@@ -156,10 +153,13 @@ export default {
     }
 
     .overlay__list {
+        width: 100%;
+        height: 100vh;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        padding: 0;
     }
 
     @media (max-width: 900px) {
