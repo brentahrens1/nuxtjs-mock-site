@@ -47,7 +47,7 @@ export default {
         top: 0;
         left: $left;
         font-size: 3rem;
-        transition: left 800ms ease-in-out;
+        transition: left 500ms ease-in-out;
     }
 
     @mixin hamburger {
