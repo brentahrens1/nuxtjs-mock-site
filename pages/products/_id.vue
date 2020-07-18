@@ -1,8 +1,7 @@
 <template>
     <div class="product">
-        <h1>{{ car.title }}</h1>
-
         <nuxt-link to="/products">Back to Products</nuxt-link>
+        <h1>{{ car.title }}</h1>
     </div>
 </template>
 

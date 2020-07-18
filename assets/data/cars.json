@@ -14,17 +14,17 @@
         "id": 2
     },
     {
-        "slug": "new-mercedes",
-        "path": "/new-mercedes",
-        "title": "Mercedes Ultra",
-        "img": "/new-mercedes/new-mercedes.png",
+        "slug": "mercedes",
+        "path": "/mercedes",
+        "title": "Mercedes",
+        "img": "/mercedes/mercedes.png",
         "id": 3
     },
     {
-        "slug": "modal",
-        "path": "/modal",
-        "title": "Modal",
-        "img": "/modal/modal.png",
+        "slug": "porsche",
+        "path": "/porsche",
+        "title": "Porsche",
+        "img": "/porsche/porsche.png",
         "id": 4
     },
     {

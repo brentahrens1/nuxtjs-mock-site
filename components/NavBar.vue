@@ -68,12 +68,13 @@ export default {
         position: fixed;
         top: 0;
         right: 0;
-        background: lightcoral;
+        background: darkslategray;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
         color: lightcyan;
+        z-index: 1000;
 
         &__logo {
             font-size: 1.5rem;
